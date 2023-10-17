@@ -90,19 +90,19 @@ model <- h2o.loadModel(path = PREDICTOR_FILE_PATH)
 
 predictions <- h2o.predict(model, newdata = as.h2o(df))
 
-# Check and modify column names
-new_colnames <- sapply(names(predictions), function(col) {
-  modified_col <- substring(col, 2)
-  if (modified_col %in% target_classes) {
-    return(modified_col)
-  } else {
-    return(col)
-  }
-})
+# # Check and modify column names
+# new_colnames <- sapply(names(predictions), function(col) {
+#   modified_col <- substring(col, 2)
+#   if (modified_col %in% target_classes) {
+#     return(modified_col)
+#   } else {
+#     return(col)
+#   }
+# })
 
 predictions <- as.data.frame(predictions)
-names(predictions) <- new_colnames
+predictions$predict <- NULL
+names(predictions) <- sort(target_classes)
 
 predictions[[id_feature]] <- ids
-predictions$predict <- NULL
 write.csv(predictions, PREDICTIONS_FILE, row.names = FALSE)
