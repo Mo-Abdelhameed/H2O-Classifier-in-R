@@ -17,6 +17,7 @@ The following is the directory structure of the project:
 - **`.gitignore`**: This file specifies the files and folders that should be ignored by Git.
 - **`Dockerfile`**: This file is used to build the Docker image for the application.
 - **`entry_point.sh`**: This file is used as the entry point for the Docker container. It is used to run the application. When the container is run using one of the commands `train` or `predict`, this script runs the corresponding script in the `src` folder to execute the task.
+- **`LICENSE`**: This file contains the license for the project.
 
 ## Usage
 
