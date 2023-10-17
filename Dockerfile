@@ -21,7 +21,7 @@ COPY ./requirements.txt /opt/
 
 RUN R -e "devtools::install_version('h2o', version = '3.42.0.2', repos = 'http://cran.rstudio.com/')"
 RUN R -e "devtools::install_version('jsonlite', version='1.8.7', repos='https://cloud.r-project.org/')"
-
+RUN R -e "devtools::install_version('fastDummies', version='1.7.3', repos='http://cran.rstudio.com/')"
 
 WORKDIR /opt/src
 RUN chown -R 1000:1000 /opt/src
