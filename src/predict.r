@@ -90,15 +90,6 @@ model <- h2o.loadModel(path = PREDICTOR_FILE_PATH)
 
 predictions <- h2o.predict(model, newdata = as.h2o(df))
 
-# # Check and modify column names
-# new_colnames <- sapply(names(predictions), function(col) {
-#   modified_col <- substring(col, 2)
-#   if (modified_col %in% target_classes) {
-#     return(modified_col)
-#   } else {
-#     return(col)
-#   }
-# })
 
 predictions <- as.data.frame(predictions)
 predictions$predict <- NULL
